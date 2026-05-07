@@ -56,7 +56,7 @@ const IMAP_CONFIG = {
 async function chatWithAI(messages) {
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
+    const timeout = setTimeout(() => controller.abort(), 30000);
     
     const response = await fetch(`${MINIMAX_BASE}/chat/completions`, {
       method: 'POST',
