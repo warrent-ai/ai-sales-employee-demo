@@ -1,0 +1,14 @@
+{
+  "name": "ai-sales-employee",
+  "version": "1.0.0",
+  "description": "AI Sales Employee Demo - Luna & XiaoMei",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "imapflow": "^1.3.3",
+    "node-fetch": "^2.7.0"
+  }
+}

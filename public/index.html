@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sales Team - RalphKit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🤖 RalphKit AI 销售团队</h1>
+      <p class="subtitle">你的 AI 员工，全天候在线</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('luna')">
+        <span class="avatar luna-avatar">L</span>
+        <span>Luna · 获客</span>
+      </button>
+      <button class="tab" onclick="switchTab('xiaomei')">
+        <span class="avatar xiaomei-avatar">小</span>
+        <span>小梅 · 客服</span>
+      </button>
+    </div>
+
+    <!-- Luna Chat -->
+    <div id="luna-panel" class="chat-panel active">
+      <div class="agent-intro">
+        <div class="agent-card">
+          <div class="agent-avatar-large luna-avatar-large">L</div>
+          <div class="agent-info">
+            <h2>Luna</h2>
+            <p>AI 获客专员 · RalphKit</p>
+            <span class="status online">🟢 在线</span>
+          </div>
+        </div>
+        <div class="agent-desc">
+          <p>我可以帮你找到海外买家、分析潜在客户、生成开发信。</p>
+          <p>试试说：<em>"帮我找东南亚光伏客户"</em></p>
+        </div>
+      </div>
+      <div id="luna-messages" class="messages"></div>
+      <div class="input-area">
+        <input type="text" id="luna-input" placeholder="输入你的需求..." onkeypress="handleEnter(event, 'luna')">
+        <button onclick="sendToLuna()">发送</button>
+      </div>
+    </div>
+
+    <!-- XiaoMei Chat -->
+    <div id="xiaomei-panel" class="chat-panel">
+      <div class="agent-intro">
+        <div class="agent-card">
+          <div class="agent-avatar-large xiaomei-avatar-large">小</div>
+          <div class="agent-info">
+            <h2>小梅</h2>
+            <p>AI 客服专员 · RalphKit</p>
+            <span class="status online">🟢 在线</span>
+          </div>
+        </div>
+        <div class="agent-desc">
+          <p>我来帮你处理客户邮件。正在读取 <strong>ralph@ralphkit.com</strong> 的收件箱...</p>
+          <button class="refresh-btn" onclick="loadEmails()">🔄 刷新邮件</button>
+        </div>
+      </div>
+      <div id="xiaomei-messages" class="messages">
+        <div class="message bot">
+          <div class="avatar xiaomei-avatar">小</div>
+          <div class="bubble">
+            <p>正在连接邮箱...</p>
+          </div>
+        </div>
+      </div>
+      <div id="email-list" class="email-list"></div>
+      <div id="xiaomei-reply-area" class="reply-area hidden">
+        <h4>📧 选择一封邮件，小梅会帮你处理</h4>
+        <p class="reply-hint">点击上方邮件，我来生成专业回复</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
