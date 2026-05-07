@@ -75,7 +75,12 @@ async function chatWithAI(messages) {
     
     const data = await response.json();
     if (data.error) return '处理中，请稍候...';
-    return data.choices?.[0]?.message?.content || '处理完成';
+    let reply = data.choices?.[0]?.message?.content || '处理完成';
+    // Strip MiniMax reasoning content (looks like ```think...``` blocks)
+    reply = reply.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+    reply = reply.replace(/```think[\s\S]*?```/gi, '').trim();
+    reply = reply.replace(/^[\s\S]*?---.*?$/gm, '').trim();
+    return reply || '处理完成';
   } catch (e) {
     if (e.name === 'AbortError') return '正在分析，请稍候...';
     return '处理中...';
